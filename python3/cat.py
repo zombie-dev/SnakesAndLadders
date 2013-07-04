@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 
-import fileinput
+import sys
 
-for line in fileinput.input(): 
-    if fileinput.isfirstline():
-        print("\nReading File: {0}".format(fileinput.filename()))
-    print(line, end="")
+for file in map( lambda arg: open(arg, 'r'), sys.argv[1:] ):
+    print('\nReading file: {0}'.format(file.name))
+    
+    for line in file:
+        print(line.rstrip())
